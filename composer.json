@@ -1,0 +1,37 @@
+{
+	"name": "kdyby/geocoder",
+	"type": "library",
+	"description": "Integration of willdurand/geocoder and league/geotools into Nette Framework",
+	"keywords": ["nette", "kdyby", "geocoder", "geocoding", "geoip", "geo", "maps", "map", "location"],
+	"homepage": "http://kdyby.org",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Filip Procházka",
+			"homepage": "http://filip-prochazka.com",
+			"email": "filip@prochazka.su"
+		}
+	],
+	"support": {
+		"email": "filip@prochazka.su",
+		"issues": "https://github.com/kdyby/geocoder/issues"
+	},
+	"require": {
+		"nette/nette": "~2.1@dev",
+
+		"league/geotools": "~0.3.3",
+		"willdurand/geocoder": "~2.5.0"
+	},
+	"require-dev": {
+		"nette/tester": "@dev",
+		"jakub-onderka/php-parallel-lint": "~0.6"
+	},
+	"autoload": {
+		"psr-0": {
+			"Kdyby\\Geocoder": "src/"
+		},
+		"classmap": [
+			"src/Kdyby/Geocoder/exceptions.php"
+		]
+	}
+}
