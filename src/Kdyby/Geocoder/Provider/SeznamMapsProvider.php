@@ -153,14 +153,14 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 					break;
 
 				case 'quar': // Brno-střed, level 4
-					$resultSet['adminLevels'][] = array(
+					$resultSet['adminLevels'][4] = array(
 						'name' => (string) $attrs->name,
 						'level' => 4,
 					);
 					break;
 
 				case 'ward': // Staré Brno, level 3
-					$resultSet['adminLevels'][] = array(
+					$resultSet['adminLevels'][3] = array(
 						'name' => (string) $attrs->name,
 						'level' => 3,
 					);
@@ -171,14 +171,14 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 					break;
 
 				case 'dist': // Brno-město, level 2
-					$resultSet['adminLevels'][] = array(
+					$resultSet['adminLevels'][2] = array(
 						'name' => (string) $attrs->name,
 						'level' => 2,
 					);
 					break;
 
 				case 'regi': // Jihomoravský, level 1
-					$resultSet['adminLevels'][] = array(
+					$resultSet['adminLevels'][1] = array(
 						'name' => (string) $attrs->name,
 						'level' => 1,
 					);
