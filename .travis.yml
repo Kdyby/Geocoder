@@ -1,3 +1,4 @@
+language: php
 
 env:
   - NETTE=nette-2.3-dev
