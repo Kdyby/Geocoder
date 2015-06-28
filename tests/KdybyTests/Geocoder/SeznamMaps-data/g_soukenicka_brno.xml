@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <point query="Soukenická, Brno" status="200" message="OK" >
+	<item
+		x="16.605550766"
+		y="49.1882400513"
+		id="80040"
+		source="stre"
+                title="Soukenická"
+	/>
+	
+	<item
+		x="16.605048406"
+		y="49.1883858917"
+		id="662544"
+		source="firm"
+                title="Mateřská škola Brno, Soukenická, Soukenická 561/8, 602 00  Staré Brno"
+	/>
+	
+	
+    </point>
+</result>

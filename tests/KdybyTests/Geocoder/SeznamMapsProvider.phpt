@@ -26,10 +26,10 @@ require_once __DIR__ . '/../bootstrap.php';
 class SeznamMapsProviderTest extends Tester\TestCase
 {
 
-	public function testReverse()
+	public function testReverse_addr()
 	{
 		$adapter = $this->mockAdapter(array(
-			file_get_contents(__DIR__ . '/SeznamMaps-data/rg_lon16_lat49.xml'),
+			file_get_contents(__DIR__ . '/SeznamMaps-data/rg_lon16.604951_lat49.18817.xml'),
 		));
 
 		$provider = new SeznamMapsProvider($adapter);
@@ -57,11 +57,11 @@ class SeznamMapsProviderTest extends Tester\TestCase
 
 
 
-	public function testGeocode()
+	public function testGeocode_addr()
 	{
 		$adapter = $this->mockAdapter(array(
 			file_get_contents(__DIR__ . '/SeznamMaps-data/g_soukenicka_5_brno.xml'),
-			file_get_contents(__DIR__ . '/SeznamMaps-data/rg_lon16_lat49.xml'),
+			file_get_contents(__DIR__ . '/SeznamMaps-data/rg_lon16.604951_lat49.18817.xml'),
 		));
 
 		$provider = new SeznamMapsProvider($adapter);
