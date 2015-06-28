@@ -55,18 +55,20 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 
 		$results = array();
 		$xml = $this->executeQuery(self::GEOCODE_URI, $query = array('query' => $address));
-		$maxSubRequests = $this->getLimit();
 
 		/** @var \SimpleXMLElement|\stdClass $point */
 		$point = $xml->point;
 		/** @var \SimpleXMLElement|\stdClass $item */
 		foreach ($point->children() as $item) {
-			if ($maxSubRequests-- == 0) {
+			if (count($results) == $this->getLimit()) {
 				break;
 			}
 
 			/** @var \SimpleXMLElement|\stdClass $attrs */
 			$attrs = $item->attributes();
+			if (in_array((string) $attrs->source, array('area', 'firm'), TRUE)) {
+				continue; // ignore
+			}
 
 			try {
 				$rgeocode = $this->executeQuery(self::REVERSE_URI, array('lat' => (string) $attrs->y, 'lon' => (string) $attrs->x));
@@ -80,7 +82,13 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 				continue; // not found :(
 			}
 
-			$results[] = $this->reversedToResult($rgeocode);
+			$resultSet = $this->reversedToResult($rgeocode);
+			if (empty($resultSet['latitude']) || empty($resultSet['longitude'])) {
+				$resultSet['latitude'] = (string) $reversedAddr->y;
+				$resultSet['longitude'] = (string) $reversedAddr->x;
+			}
+
+			$results[] = $resultSet;
 		}
 
 		return $this->returnResults($results);

@@ -89,6 +89,38 @@ class SeznamMapsProviderTest extends Tester\TestCase
 
 
 
+	public function testGeocode_stre()
+	{
+		$adapter = $this->mockAdapter(array(
+			file_get_contents(__DIR__ . '/SeznamMaps-data/g_soukenicka_brno.xml'),
+			file_get_contents(__DIR__ . '/SeznamMaps-data/rg_lon16.605550766_lat49.1882400513.xml'),
+		));
+
+		$provider = new SeznamMapsProvider($adapter);
+		$addresses = $provider->geocode("Soukenická, Brno");
+
+		Assert::count(1, $addresses);
+
+		$address = $addresses->first();
+		Assert::same(49.1882410227, $address->getLatitude());
+		Assert::same(16.6055516684, $address->getLongitude());
+		Assert::same('Česká republika', $address->getCountry()->getName());
+		Assert::null($address->getCountry()->getCode());
+		Assert::null($address->getPostalCode());
+		Assert::same('Brno', $address->getLocality());
+		Assert::same('Soukenická', $address->getStreetName());
+		Assert::null($address->getStreetNumber());
+
+		$adminLevels = $address->getAdminLevels();
+		Assert::count(4, $adminLevels);
+		Assert::same('Brno-střed', $adminLevels->get(4)->getName());
+		Assert::same('Staré Brno', $adminLevels->get(3)->getName());
+		Assert::same('Brno-město', $adminLevels->get(2)->getName());
+		Assert::same('Jihomoravský', $adminLevels->get(1)->getName());
+	}
+
+
+
 	/**
 	 * @return \Mockery\Mock|\Ivory\HttpAdapter\HttpAdapterInterface
 	 */
