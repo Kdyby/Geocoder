@@ -6,12 +6,15 @@ $rgeocode = [
 ];
 
 foreach ($rgeocode as $target => $query) {
-	$url = 'https://api4.mapy.cz/rgeocode?' . http_build_query($query, NULL, '&');
-	file_put_contents(__DIR__ . '/' . $target . '.xml', file_get_contents($url));
+	if (file_exists($targetFile = __DIR__ . '/' . $target . '.xml')) {
+		continue;
+	}
+
+	file_put_contents($targetFile, file_get_contents('https://api4.mapy.cz/rgeocode?' . http_build_query($query, NULL, '&')));
 }
 
 $geocode = [ // https://api4.mapy.cz/geocode
-	'g_soukenicka_5_brno' => ['query' => 'soukenická 5, brno'],
+	'g_soukenicka_5_brno' => ['query' => 'Soukenická 5, Brno'],
 	'g_soukenicka_5' => ['query' => 'soukenická 5'],
 	'g_brno_stred' => ['query' => 'brno střed'],
 	'g_jihomoravsky_kraj' => ['query' => 'jihomoravský kraj'],
@@ -21,6 +24,9 @@ $geocode = [ // https://api4.mapy.cz/geocode
 ];
 
 foreach ($geocode as $target => $query) {
-	$url = 'https://api4.mapy.cz/geocode?' . http_build_query($query, NULL, '&');
-	file_put_contents(__DIR__ . '/' . $target . '.xml', file_get_contents($url));
+	if (file_exists($targetFile = __DIR__ . '/' . $target . '.xml')) {
+		continue;
+	}
+
+	file_put_contents($targetFile, file_get_contents('https://api4.mapy.cz/geocode?' . http_build_query($query, NULL, '&')));
 }
