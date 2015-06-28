@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <point query="soukenická 5, brno" status="200" message="OK" >
+	<item
+		x="16.6049518585"
+		y="49.1881713867"
+		id="8897561"
+		source="addr"
+                title="Soukenická 559/5"
+	/>
+	
+	
+    </point>
+</result>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rgeocode label="čtvrť Praha 8, Praha, okres Hlavní město Praha" status="200" message="Ok">
+    <item id="115" name="Praha 8" type="quar" x="14.467386754" y="50.1115120069" />
+    <item id="14965" name="Troja" type="ward" x="14.423425" y="50.1221472222" />
+    <item id="3468" name="Praha" type="muni" x="14.4341412988" y="50.0835493857" />
+    <item id="47" name="Hlavní město Praha" type="dist" x="14.466000528" y="50.066788825" />
+    <item id="10" name="Hlavní město Praha" type="regi" x="14.466000528" y="50.066788825" />
+    <item id="112" name="Česká republika" type="coun" x="15.3384111111" y="49.7428583333" />
+</rgeocode>

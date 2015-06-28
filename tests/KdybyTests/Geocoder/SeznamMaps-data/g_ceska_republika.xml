@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <point query="česká republika" status="200" message="OK" >
+	<item
+		x="15.3384113312"
+		y="49.7428588867"
+		id="112"
+		source="coun"
+                title="Česká republika"
+	/>
+	
+	<item
+		x="14.4313944887"
+		y="50.1034270075"
+		id="449773"
+		source="firm"
+                title="Policejní prezidium České republiky, Strojnická 935/27, 170 00  Praha, Holešovice"
+	/>
+	
+	<item
+		x="14.4712999946"
+		y="48.9821998083"
+		id="2675100"
+		source="firm"
+                title="Ministerstvo vnitra - Regionální oddělení pobytu cizinců České Budějovice, Pražská tř. 1257/23, 370 01  České Budějovice 3"
+	/>
+	
+	<item
+		x="18.2743033326"
+		y="49.81089839"
+		id="2675199"
+		source="firm"
+                title="Ministerstvo vnitra - Regionální oddělení pobytu cizinců Ostrava, Výstavní 55/117, 703 00  Ostrava, Vítkovice"
+	/>
+	
+	<item
+		x="15.8220312837"
+		y="50.2101644656"
+		id="2675171"
+		source="firm"
+                title="Ministerstvo vnitra - Regionální oddělení pobytu cizinců Hradec Králové, Ulrichovo náměstí 810/4, 500 02  Hradec Králové"
+	/>
+	
+	<item
+		x="13.4069538978"
+		y="49.7261694051"
+		id="2675242"
+		source="firm"
+                title="Ministerstvo vnitra - Regionální oddělení pobytu cizinců Plzeň, Slovanská alej 2046/26, 326 00  Plzeň, Východní Předměstí"
+	/>
+	
+	<item
+		x="14.0303367569"
+		y="50.6656858989"
+		id="2675261"
+		source="firm"
+                title="Ministerstvo vnitra - Regionální oddělení pobytu cizinců Ústí nad Labem, Berní 2261/1, 400 01  Ústí nad Labem-centrum"
+	/>
+	
+	<item
+		x="16.6272730235"
+		y="49.1690280446"
+		id="2675127"
+		source="firm"
+                title="Ministerstvo vnitra - Regionální oddělení pobytu cizinců Brno, Hněvkovského 30/65, 617 00  Brno, Komárov"
+	/>
+	
+	<item
+		x="14.9218810414"
+		y="50.4125743168"
+		id="2675096"
+		source="firm"
+                title="Ministerstvo vnitra - Oddělení pobytu cizinců Mladá Boleslav, Štefánikova 1304, 293 01  Mladá Boleslav III"
+	/>
+	
+	<item
+		x="13.990320066"
+		y="49.6723087703"
+		id="2675077"
+		source="firm"
+                title="Ministerstvo vnitra - Oddělení pobytu cizinců Příbram, Žežická 498, 261 01  Příbram V-Zdaboř"
+	/>
+	
+	
+    </point>
+</result>

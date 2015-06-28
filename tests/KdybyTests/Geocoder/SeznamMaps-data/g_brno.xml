@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <point query="brno" status="200" message="OK" >
+	<item
+		x="16.6078414917"
+		y="49.2002220154"
+		id="5740"
+		source="muni"
+                title="Brno"
+	/>
+	
+	<item
+		x="16.5887737274"
+		y="49.2067642212"
+		id="72"
+		source="dist"
+                title="okres Brno-město"
+	/>
+	
+	<item
+		x="16.4969425201"
+		y="49.1791381836"
+		id="73"
+		source="dist"
+                title="okres Brno-venkov"
+	/>
+	
+	<item
+		x="16.5996894836"
+		y="49.1951904297"
+		id="11"
+		source="quar"
+                title="čtvrť Brno-střed"
+	/>
+	
+	<item
+		x="16.5992927551"
+		y="49.1880607605"
+		id="14635"
+		source="ward"
+                title="Staré Brno"
+	/>
+	
+	<item
+		x="16.6110858917"
+		y="49.1918640137"
+		id="14634"
+		source="ward"
+                title="Brno-město"
+	/>
+	
+	<item
+		x="16.593460083"
+		y="49.2266921997"
+		id="13"
+		source="quar"
+                title="čtvrť Brno-Královo Pole"
+	/>
+	
+	<item
+		x="16.6200866699"
+		y="49.1779518127"
+		id="17"
+		source="quar"
+                title="čtvrť Brno-jih"
+	/>
+	
+	<item
+		x="16.6216373444"
+		y="49.2117805481"
+		id="14"
+		source="quar"
+                title="čtvrť Brno-sever"
+	/>
+	
+	<item
+		x="16.4767990112"
+		y="49.236366272"
+		id="23"
+		source="quar"
+                title="čtvrť Brno-Bystrc"
+	/>
+	
+	
+    </point>
+</result>
