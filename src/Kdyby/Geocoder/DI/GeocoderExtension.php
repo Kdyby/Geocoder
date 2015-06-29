@@ -43,7 +43,7 @@ class GeocoderExtension extends Nette\DI\CompilerExtension
 	public static function register(Nette\Configurator $configurator)
 	{
 		$configurator->onCompile[] = function ($config, Nette\DI\Compiler $compiler) {
-			$compiler->addExtension('curl', new GeocoderExtension());
+			$compiler->addExtension('geocoder', new GeocoderExtension());
 		};
 	}
 
