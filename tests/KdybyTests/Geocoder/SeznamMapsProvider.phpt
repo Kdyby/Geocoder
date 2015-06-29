@@ -159,7 +159,7 @@ class SeznamMapsProviderTest extends Tester\TestCase
 		$adapter = \Mockery::mock('Ivory\HttpAdapter\HttpAdapterInterface')->shouldDeferMissing();
 		$adapter->shouldReceive('get')->andReturnUsing(function ($url) {
 			$url = new Nette\Http\Url($url);
-			$query = $url->getQueryParameters();
+			parse_str($url->getQuery(), $query);
 
 			if ($url->path == '/rgeocode') {
 				$target = str_replace('-', '_', Strings::webalize(sprintf('lon%s_lat%s', $query['lon'], $query['lat']), '._'));
