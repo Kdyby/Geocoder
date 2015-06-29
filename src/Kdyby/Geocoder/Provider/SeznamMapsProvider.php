@@ -11,11 +11,9 @@
 namespace Kdyby\Geocoder\Provider;
 
 use Geocoder\Exception\NoResult;
-use Geocoder\Exception\QuotaExceeded;
 use Geocoder\Exception\UnsupportedOperation;
 use Geocoder\Provider\AbstractHttpProvider;
 use Geocoder\Provider\Provider;
-use Ivory\HttpAdapter\HttpAdapterInterface;
 use Kdyby;
 use Nette;
 use SimpleXMLElement;
