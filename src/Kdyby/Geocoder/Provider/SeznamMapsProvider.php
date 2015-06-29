@@ -33,7 +33,7 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 	const REVERSE_URI = 'https://api4.mapy.cz/rgeocode';
 
 	/** regexes for parsing address */
-	// const RE_STREET = '(?:(?:\sulice\s)?(?P<streetName>(?:[0-9]+(?=[^/,]+))?[^/,0-9]+(?<![\s\,])))';
+	const RE_STREET = '(?:(?:\sulice\s)?(?P<streetName>(?:[0-9]+(?=[^/,]+))?[^/,0-9]+(?<![\s\,])))';
 	const RE_NUMBER = '(?:(?<!č\.p\.)(?:č\.p\.\s+)?(?P<streetNumber>[0-9]+(?:\/[0-9]+)?[a-z]?))';
 	// const RE_QUARTER = '(?:\s?čtvrť\s+(?P<quarter>[^,]+))';
 	// const RE_CITY = '(?:(?:\s?obec\s)?(?P<city>(?:(?P<city_name>[^,-]+(?<!\s))(?:(?<!\s)-(?!\s)(?P<city_part>\\city_name[^,]+(?<!\s)))?)|(?:[^,]+(?<!\s))))';
@@ -82,7 +82,7 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 				continue; // not found :(
 			}
 
-			$resultSet = $this->reversedToResult($rgeocode);
+			$resultSet = $this->reversedToResult($rgeocode, (string) $attrs->source);
 			if (empty($resultSet['latitude']) || empty($resultSet['longitude'])) {
 				$resultSet['latitude'] = (string) $reversedAddr->y;
 				$resultSet['longitude'] = (string) $reversedAddr->x;
@@ -136,9 +136,13 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 
 	/**
 	 * @param SimpleXMLElement|\stdClass $rgeocode
+	 * @param string|NULL $maximumPrecision
+	 * @return array
 	 */
-	private function reversedToResult(\SimpleXMLElement $rgeocode)
+	private function reversedToResult(\SimpleXMLElement $rgeocode, $maximumPrecision = NULL)
 	{
+		$components = array_flip(array('addr', 'stre', 'quar', 'ward', 'muni', 'dist', 'regi', 'coun'));
+
 		$resultSet = array();
 
 		/** @var \SimpleXMLElement|\stdClass $item */
@@ -146,13 +150,22 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 			$attrs = $item->attributes();
 			/** @var \SimpleXMLElement|\stdClass $attrs */
 
-			switch ($attrs->type) {
+			$type = (string) $attrs->type;
+			if ($maximumPrecision !== NULL && (!isset($components[$type]) || $components[$type] < $components[$maximumPrecision])) {
+				continue; // ignore component
+			}
+
+			switch ($type) {
 				case 'addr':
 					$resultSet['latitude'] = (string) $attrs->y;
 					$resultSet['longitude'] = (string) $attrs->x;
 
 					if (preg_match('~' . self::RE_NUMBER . '\\s*\\z~i', (string) $attrs->name, $m)) {
 						$resultSet['streetNumber'] = $m['streetNumber'];
+					}
+
+					if (empty($resultSet['streetName']) && preg_match('~^' . self::RE_STREET . '?\\s*' . self::RE_NUMBER . '\\s*\\z~i', (string) $attrs->name, $m)) {
+						$resultSet['streetName'] = $m['streetName'];
 					}
 					break;
 
