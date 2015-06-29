@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rgeocode label="nám. Komenského 8, Fulnek, 742 45, okres Nový Jičín" status="200" message="Ok">
+    <item id="9894749" name="nám. Komenského 8" type="addr" x="17.9030602365" y="49.7124181542" />
+    <item id="106668" name="Fučíkova" type="stre" x="17.8988416003" y="49.7118504661" />
+    <item id="14788" name="Fulnek" type="ward" x="17.9031929449" y="49.7123762259" />
+    <item id="4620" name="Fulnek" type="muni" x="17.9031929449" y="49.7123762259" />
+    <item id="63" name="Nový Jičín" type="dist" x="18.003350733" y="49.6510861813" />
+    <item id="12" name="Moravskoslezský" type="regi" x="17.9795107299" y="49.8207182412" />
+    <item id="112" name="Česká republika" type="coun" x="15.3384111111" y="49.7428583333" />
+</rgeocode>

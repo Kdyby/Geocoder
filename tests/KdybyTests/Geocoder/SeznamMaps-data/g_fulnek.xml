@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <point query="Fulnek" status="200" message="OK" >
+	<item
+		x="17.9031925201"
+		y="49.7123756409"
+		id="4620"
+		source="muni"
+                title="Fulnek"
+	/>
+	
+	
+    </point>
+</result>

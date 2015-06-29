@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <point query="Starovičky" status="200" message="OK" >
+	<item
+		x="16.7753715515"
+		y="48.9074668884"
+		id="5598"
+		source="muni"
+                title="Starovičky"
+	/>
+	
+	
+    </point>
+</result>

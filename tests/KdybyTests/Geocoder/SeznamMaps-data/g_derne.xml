@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <point query="Děrné" status="200" message="OK" >
+	<item
+		x="17.9257926941"
+		y="49.7262077332"
+		id="1651"
+		source="ward"
+                title="Děrné"
+	/>
+	
+	<item
+		x="17.9341773987"
+		y="49.7439842224"
+		id="1715042"
+		source="base"
+                title="Rozcestník Děrné - silnice"
+	/>
+	
+	<item
+		x="17.9243927002"
+		y="49.7258529663"
+		id="15252874"
+		source="pubt"
+                title="Zastávka autobusu Fulnek, Děrné, střed"
+	/>
+	
+	<item
+		x="17.9112033844"
+		y="49.7324867249"
+		id="15252875"
+		source="pubt"
+                title="Zastávka autobusu Fulnek, Děrné, u Hájků"
+	/>
+	
+	<item
+		x="17.9364681244"
+		y="49.7217216492"
+		id="15252873"
+		source="pubt"
+                title="Zastávka autobusu Fulnek, Děrné, rozc."
+	/>
+	
+	<item
+		x="7.69424962997"
+		y="51.5956878662"
+		id="491428"
+		source="osml"
+                title="&#39;Derne"
+	/>
+	
+	<item
+		x="7.52159643173"
+		y="51.5689544678"
+		id="218510"
+		source="osml"
+                title="&#39;Derne"
+	/>
+	
+	<item
+		x="4.84205627441"
+		y="44.8652076721"
+		id="21197313"
+		source="osms"
+                title="Chemin du Derne"
+	/>
+	
+	<item
+		x="7.52821397781"
+		y="51.5669021606"
+		id="26595551"
+		source="osms"
+                title="Derne Bahnhof"
+	/>
+	
+	<item
+		x="-71.0635604858"
+		y="42.3594284058"
+		id="39596577"
+		source="osms"
+                title="Derne Street"
+	/>
+	
+	
+    </point>
+</result>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <point query="Černická 10, 301 00 Plzeň" status="200" message="OK" >
+	<item
+		x="13.3807411194"
+		y="49.7394065857"
+		id="9069090"
+		source="addr"
+                title="Černická 708/10"
+	/>
+	
+	
+    </point>
+</result>

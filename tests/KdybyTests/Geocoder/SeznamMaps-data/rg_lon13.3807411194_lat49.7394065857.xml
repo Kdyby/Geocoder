@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rgeocode label="Černická 708/10, Plzeň, 301 00, okres Plzeň-město" status="200" message="Ok">
+    <item id="9069090" name="Černická 708/10" type="addr" x="13.3807408783" y="49.7394048986" />
+    <item id="6" name="Plzeň 3" type="quar" x="13.3413913218" y="49.7301927082" />
+    <item id="14186" name="Jižní Předměstí" type="ward" x="13.3720658133" y="49.7351083484" />
+    <item id="1243" name="Plzeň" type="muni" x="13.3783488889" y="49.7477830556" />
+    <item id="12" name="Plzeň-město" type="dist" x="13.4284990328" y="49.7210586784" />
+    <item id="2" name="Plzeňský" type="regi" x="13.2218885199" y="49.5971116193" />
+    <item id="112" name="Česká republika" type="coun" x="15.3384111111" y="49.7428583333" />
+</rgeocode>

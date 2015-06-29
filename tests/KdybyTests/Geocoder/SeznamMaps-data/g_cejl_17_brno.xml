@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <point query="Cejl 17, Brno" status="200" message="OK" >
+	<item
+		x="16.6172981262"
+		y="49.1972694397"
+		id="8901358"
+		source="addr"
+                title="Cejl 486/17"
+	/>
+	
+	
+    </point>
+</result>

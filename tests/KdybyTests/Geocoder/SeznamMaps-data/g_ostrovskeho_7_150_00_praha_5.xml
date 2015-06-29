@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <point query="Ostrovského 7, 150 00 Praha 5" status="200" message="OK" >
+	<item
+		x="14.4010391235"
+		y="50.0686187744"
+		id="8968117"
+		source="addr"
+                title="Ostrovského 365/7"
+	/>
+	
+	
+    </point>
+</result>

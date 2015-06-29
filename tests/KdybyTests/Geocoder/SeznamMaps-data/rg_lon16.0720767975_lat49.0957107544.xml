@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rgeocode label="ulice MCV Brno, Hrotovice, okres Třebíč" status="200" message="Ok">
+    <item id="134446" name="MCV Brno" type="stre" x="16.0720767631" y="49.0957088877" />
+    <item id="3274" name="Hrotovice" type="ward" x="16.0606740836" y="49.1076991629" />
+    <item id="5369" name="Hrotovice" type="muni" x="16.0606740836" y="49.1076991629" />
+    <item id="69" name="Třebíč" type="dist" x="15.8883016417" y="49.1499240379" />
+    <item id="13" name="Vysočina" type="regi" x="15.6715061617" y="49.4134482566" />
+    <item id="112" name="Česká republika" type="coun" x="15.3384111111" y="49.7428583333" />
+</rgeocode>

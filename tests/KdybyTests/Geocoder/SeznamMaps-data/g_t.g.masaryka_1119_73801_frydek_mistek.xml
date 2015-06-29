@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <point query="T.G.Masaryka 1119, 73801 Frýdek-Místek" status="200" message="OK" >
+	<item
+		x="18.3545131683"
+		y="49.6822471619"
+		id="10909643"
+		source="addr"
+                title="tř. T. G. Masaryka 1119"
+	/>
+	
+	
+    </point>
+</result>
