@@ -56,15 +56,15 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 		$results = array();
 		$xml = $this->executeQuery(self::GEOCODE_URI, $query = array('query' => $address));
 
-		/** @var \SimpleXMLElement|\stdClass $point */
+		/** @var SimpleXMLElement|\stdClass $point */
 		$point = $xml->point;
-		/** @var \SimpleXMLElement|\stdClass $item */
+		/** @var SimpleXMLElement|\stdClass $item */
 		foreach ($point->children() as $item) {
 			if (count($results) == $this->getLimit()) {
 				break;
 			}
 
-			/** @var \SimpleXMLElement|\stdClass $attrs */
+			/** @var SimpleXMLElement|\stdClass $attrs */
 			$attrs = $item->attributes();
 			if (in_array((string) $attrs->source, array('area', 'firm'), TRUE)) {
 				continue; // ignore
@@ -98,14 +98,14 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 
 	/**
 	 * @param SimpleXMLElement $rgeocode
-	 * @return \SimpleXMLElement|\stdClass
+	 * @return SimpleXMLElement|\stdClass
 	 */
-	private function findReversedComponent(\SimpleXMLElement $rgeocode, $type)
+	private function findReversedComponent(SimpleXMLElement $rgeocode, $type)
 	{
 		foreach ($rgeocode->children() as $item) {
-			/** @var \SimpleXMLElement|\stdClass $item */
+			/** @var SimpleXMLElement|\stdClass $item */
 			$attrs = $item->attributes();
-			/** @var \SimpleXMLElement|\stdClass $attrs */
+			/** @var SimpleXMLElement|\stdClass $attrs */
 			if ((string) $attrs->type === $type) {
 				return $attrs;
 			}
@@ -139,19 +139,19 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 	 * @param string|NULL $maximumPrecision
 	 * @return array
 	 */
-	private function reversedToResult(\SimpleXMLElement $rgeocode, $maximumPrecision = NULL)
+	private function reversedToResult(SimpleXMLElement $rgeocode, $maximumPrecision = NULL)
 	{
-		$components = array_flip(array('addr', 'stre', 'quar', 'ward', 'muni', 'dist', 'regi', 'coun'));
+		$weights = array_flip(array('addr', 'stre', 'quar', 'ward', 'muni', 'dist', 'regi', 'coun'));
 
 		$resultSet = array();
 
-		/** @var \SimpleXMLElement|\stdClass $item */
+		/** @var SimpleXMLElement|\stdClass $item */
 		foreach ($rgeocode->children() as $item) {
 			$attrs = $item->attributes();
-			/** @var \SimpleXMLElement|\stdClass $attrs */
+			/** @var SimpleXMLElement|\stdClass $attrs */
 
 			$type = (string) $attrs->type;
-			if ($maximumPrecision !== NULL && (!isset($components[$type]) || $components[$type] < $components[$maximumPrecision])) {
+			if ($maximumPrecision !== NULL && (!isset($weights[$type]) || $weights[$type] < $weights[$maximumPrecision])) {
 				continue; // ignore component
 			}
 
@@ -211,7 +211,7 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 			}
 		}
 
-		/** @var \SimpleXMLElement|\stdClass $attrs */
+		/** @var SimpleXMLElement|\stdClass $attrs */
 		$attrs = $rgeocode->attributes();
 
 		$postalCodeRegexp = sprintf('~%s(,\\s+%s)?(,\\s+%s)?(,\\s+%s)?\\z~i', self::RE_POSTAL_CODE, self::RE_DISTRICT, self::RE_REGION, self::RE_COUNTRY);
@@ -240,7 +240,7 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 
 		try {
 			libxml_use_internal_errors(TRUE);
-			return new \SimpleXMLElement($content);
+			return new SimpleXMLElement($content);
 
 		} catch (\Exception $e) {
 			throw new NoResult(sprintf('Invalid result %s', json_encode($query)), 0, $e);
