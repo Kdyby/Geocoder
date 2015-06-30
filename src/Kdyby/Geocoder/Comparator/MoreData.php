@@ -44,13 +44,6 @@ class MoreData extends Nette\Object implements AddressComparator
 	 */
 	public function compare(Address $a, Address $b, $query)
 	{
-		if ($this->addressFullyMatchesInput($a, $query)) {
-			return -1;
-
-		} elseif ($this->addressFullyMatchesInput($b, $query)) {
-			return 1;
-		}
-
 		if (($compareCity = $this->compareCity($a, $b, $query)) !== 0) {
 			return $compareCity;
 		}
@@ -59,63 +52,11 @@ class MoreData extends Nette\Object implements AddressComparator
 			return $compareStreets;
 		}
 
-		return $this->compareNumbers($a, $b, $query);
-	}
-
-
-
-	protected function addressFullyMatchesInput(Address $address, $query)
-	{
-		return $this->cityMatches($address, $query)
-			&& $this->streetMatches($address, $query)
-			&& $this->numberMatches($address, $query);
-	}
-
-
-
-	protected function cityMatches(Address $address, $query)
-	{
-		if (!$address->getLocality()) {
-			return FALSE; // no city no fun
+		if (($compareNumbers = $this->compareNumbers($a, $b, $query)) !== 0) {
+			return $compareNumbers;
 		}
 
-		return stripos($query, $address->getLocality()) !== FALSE; // is there a city in the input?
-	}
-
-
-
-	protected function streetMatches(Address $address, $query)
-	{
-		if (!$address->getStreetName()) {
-			return (bool) UserInputHelpers::matchAddress($query); // does the input look like it contains street?
-		}
-
-		return stripos($query, $address->getStreetName()) !== FALSE; // does the input contain the street?
-	}
-
-
-
-	protected function numberMatches(Address $address, $query)
-	{
-		$number = UserInputHelpers::normalizeNumber($address->getStreetNumber());
-
-		if (!($m = UserInputHelpers::matchNumber($query))) { // if there is house number AND orientation number in input
-			return FALSE;
-		}
-
-		if (!empty($m->hn)) {
-			if (empty($number['hn']) || $m->hn !== $number['hn']) {
-				return FALSE;
-			}
-		}
-
-		if (!empty($m->on)) {
-			if (empty($number['on']) || strtolower($m->on) !== strtolower($number['on'])) {
-				return FALSE;
-			}
-		}
-
-		return TRUE;
+		return $this->fallback ? $this->fallback->compare($a, $b, $query) : 0;
 	}
 
 
@@ -170,38 +111,126 @@ class MoreData extends Nette\Object implements AddressComparator
 
 	protected function compareNumbers(Address $a, Address $b, $query)
 	{
-		if (!$inputNumber = UserInputHelpers::matchNumber($query)) {
-			return $this->fallback ? $this->fallback->compare($a, $b, $query) : 0;
-		}
-
+		// if one of the addresses doesn't even have a number in it,
 		$aNumber = UserInputHelpers::normalizeNumber($a->getStreetNumber());
 		$bNumber = UserInputHelpers::normalizeNumber($b->getStreetNumber());
-
 		if ($aNumber && !$bNumber) {
 			return -1;
 		}
-
 		if ($bNumber && !$aNumber) {
 			return 1;
 		}
 
-		if ($inputNumber->hn) {
-			if ($aNumber->hn !== $inputNumber->hn && $bNumber->hn === $inputNumber->hn) {
-				return 1;
-			} elseif ($aNumber->hn === $inputNumber->hn && $bNumber->hn !== $inputNumber->hn) {
+		if (!$inputNumber = UserInputHelpers::matchStreet($query)) {
+			return 0;
+		}
+
+		if ($this->isNumberFull($inputNumber)) { // preffer more exact
+			$aEquals = $this->equalsNumber($aNumber, $inputNumber);
+			$bEquals = $this->equalsNumber($bNumber, $inputNumber);
+			if ($aEquals && !$bEquals) {
 				return -1;
+			}
+			if ($bEquals && !$aEquals) {
+				return 1;
 			}
 		}
 
-		if ($inputNumber->on) {
-			if (strtolower($aNumber->on) !== strtolower($inputNumber->on) && strtolower($bNumber->on) === strtolower($inputNumber->on)) {
-				return 1;
-			} elseif (strtolower($aNumber->on) === strtolower($inputNumber->on) && strtolower($bNumber->on) !== strtolower($inputNumber->on)) {
-				return -1;
-			}
+		// preffer more data, but at least one component must equal
+		$aPartially = $this->equalsNumberPartially($aNumber, $inputNumber);
+		$bPartially = $this->equalsNumberPartially($bNumber, $inputNumber);
+		if ($aPartially && !$bPartially) {
+			return -1;
+		}
+		if ($bPartially && !$aPartially) {
+			return 1;
 		}
 
-		return $this->fallback ? $this->fallback->compare($a, $b, $query) : 0;
+		$aHasMore = $this->isNumberFull($aNumber) && !$this->isNumberFull($bNumber);
+		$bHasMore = $this->isNumberFull($bNumber) && !$this->isNumberFull($aNumber);
+		if ($aHasMore && !$bHasMore) {
+			return -1;
+		}
+		if ($bHasMore && !$aHasMore) {
+			return 1;
+		}
+
+		return 0;
+	}
+
+
+
+	/**
+	 * @param \stdClass $number
+	 * @return bool
+	 */
+	protected function isNumberFull($number)
+	{
+		return !empty($number->hn) && !empty($number->on);
+	}
+
+
+
+	/**
+	 * @param \stdClass $a
+	 * @param \stdClass $b
+	 * @return boolean
+	 */
+	protected function equalsNumber($a, $b)
+	{
+		if ($a->hn === $b->hn && strtolower($a->on) === strtolower($b->on)) {
+			return TRUE;
+		}
+
+		if ($a->hn === strtolower($b->on) && strtolower($a->on) === $b->hn) {
+			return TRUE;
+		}
+
+		return FALSE;
+	}
+
+
+
+	/**
+	 * @param \stdClass $a
+	 * @param \stdClass $b
+	 * @return boolean
+	 */
+	protected function equalsNumberPartially($a, $b)
+	{
+		if (($b->hn !== NULL && $a->hn === $b->hn) || ($b->on !== NULL && strtolower($a->on) === strtolower($b->on))) {
+			return TRUE;
+		}
+
+		if (($b->hn !== NULL && $a->hn === strtolower($b->on)) || ($b->hn !== NULL && strtolower($a->on) === $b->hn)) {
+			return TRUE;
+		}
+
+		return FALSE;
+	}
+
+
+
+	/**
+	 * @param \stdClass $a
+	 * @param \stdClass $b
+	 * @return boolean
+	 */
+	protected function equalsOrientationNumber($a, $b)
+	{
+		return strtolower($a->on) === strtolower($b->on);
+	}
+
+
+
+	/**
+	 * @param \stdClass $a
+	 * @param \stdClass $b
+	 * @return boolean
+	 */
+	protected function equalsHouseNumber($a, $b)
+	{
+		return $a->hn === $b->hn;
 	}
 
 }
