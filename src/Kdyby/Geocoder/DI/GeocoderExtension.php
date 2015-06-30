@@ -108,6 +108,10 @@ class GeocoderExtension extends Nette\DI\CompilerExtension
 
 	protected function loadProviders(array $config)
 	{
+		if (empty($config['providers'])) {
+			return;
+		}
+
 		$builder = $this->getContainerBuilder();
 		$aggregator = $builder->addDefinition($this->prefix('aggregator'))
 			->setClass('Geocoder\ProviderAggregator');
