@@ -14,6 +14,7 @@ use Geocoder;
 use Geocoder\Model\AddressCollection;
 use Geocoder\Provider\AbstractProvider;
 use Geocoder\Provider\Provider;
+use Ivory;
 use Kdyby;
 use Nette;
 use Psr\Log\LoggerInterface;
@@ -62,6 +63,9 @@ class SilencingProvider extends AbstractProvider implements Provider
 
 		} catch (Geocoder\Exception\Exception $e) {
 			$this->logger->warning(sprintf('%s(%s): %s', get_class($e), $this->provider->getName(), $e->getMessage()));
+
+		} catch (Ivory\HttpAdapter\HttpAdapterException $e) {
+			$this->logger->warning(sprintf('%s(%s): %s', get_class($e), $this->provider->getName(), $e->getMessage()));
 		}
 
 		return new AddressCollection([]);
@@ -83,6 +87,9 @@ class SilencingProvider extends AbstractProvider implements Provider
 			$this->logger->warning(sprintf('QuotaExceeded(%s): %s', $this->provider->getName(), $e->getMessage()));
 
 		} catch (Geocoder\Exception\Exception $e) {
+			$this->logger->warning(sprintf('%s(%s): %s', get_class($e), $this->provider->getName(), $e->getMessage()));
+
+		} catch (Ivory\HttpAdapter\HttpAdapterException $e) {
 			$this->logger->warning(sprintf('%s(%s): %s', get_class($e), $this->provider->getName(), $e->getMessage()));
 		}
 
