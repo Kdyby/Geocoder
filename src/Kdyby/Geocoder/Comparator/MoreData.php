@@ -73,7 +73,7 @@ class MoreData extends Nette\Object implements AddressComparator
 			return 1;
 		}
 
-		if (stripos($query, $a->getLocality()) !== FALSE && stripos($query, $a->getLocality()) === FALSE) {
+		if (stripos($query, $a->getLocality()) !== FALSE && stripos($query, $b->getLocality()) === FALSE) {
 			return -1;
 
 		} elseif (stripos($query, $b->getLocality()) !== FALSE && stripos($query, $a->getLocality()) === FALSE) {
@@ -97,7 +97,7 @@ class MoreData extends Nette\Object implements AddressComparator
 			return 1;
 		}
 
-		if (stripos($query, $a->getStreetName()) !== FALSE && stripos($query, $a->getStreetName()) === FALSE) {
+		if (stripos($query, $a->getStreetName()) !== FALSE && stripos($query, $b->getStreetName()) === FALSE) {
 			return -1;
 
 		} elseif (stripos($query, $b->getStreetName()) !== FALSE && stripos($query, $a->getStreetName()) === FALSE) {

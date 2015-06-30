@@ -122,6 +122,26 @@ class MoreDataComparatorTest extends Tester\TestCase
 
 
 
+	public function testSort_sameCityOverNumbers()
+	{
+		$query = 'Pobřežní 46, Kolín';
+		$list = [
+			$a = Helpers::createAddress('Kutná Hora', 'Pobřežní', 3, NULL, '284 01'),
+			$b = Helpers::createAddress('Kolín', 'Pobřežní', NULL, NULL, '280 02'),
+			$c = Helpers::createAddress('Týnec nad Labem', 'Pobřežní', NULL, NULL, '281 26'),
+			$d = Helpers::createAddress('Veltruby', 'Pobřežní', NULL, NULL, '280 02'),
+		];
+
+		$comparator = new MoreData();
+		@usort($list, function (Address $a, Address $b) use ($comparator, $query) {
+			return $comparator->compare($a, $b, $query);
+		});
+
+		Assert::same([$b, $a, $d, $c], $list);
+	}
+
+
+
 	public function testSort_fullNumberInInput()
 	{
 		$query = 'Soukenická 559/5, Brno';
