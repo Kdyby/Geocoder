@@ -54,5 +54,8 @@
 		"classmap": [
 			"src/Kdyby/Geocoder/exceptions.php"
 		]
+	},
+	"autoload-dev": {
+		"classmap": ["tests/KdybyTests/"]
 	}
 }
