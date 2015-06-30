@@ -96,7 +96,7 @@ class SilencingProvider extends AbstractProvider implements Provider
 	 */
 	public function getName()
 	{
-		return 'silencing';
+		return $this->provider->getName() . '_silenced';
 	}
 
 }
