@@ -23,7 +23,7 @@ use SimpleXMLElement;
 /**
  * @author Filip Procházka <filip@prochazka.su>
  */
-class SeznamMapsProvider extends AbstractHttpProvider implements Provider
+class SeznamMaps extends AbstractHttpProvider implements Provider
 {
 
 	/** @internal Seznam Geocode API url */
@@ -48,7 +48,7 @@ class SeznamMapsProvider extends AbstractHttpProvider implements Provider
 	public function geocode($address)
 	{
 		if (filter_var($address, FILTER_VALIDATE_IP)) { // This API doesn't handle IPs
-			throw new UnsupportedOperation('The SeznamMapsProvider does not support IP addresses.');
+			throw new UnsupportedOperation('The SeznamMaps does not support IP addresses.');
 		}
 
 		$results = array();

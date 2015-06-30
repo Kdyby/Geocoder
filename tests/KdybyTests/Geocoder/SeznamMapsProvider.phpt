@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Test: Kdyby\Geocoder\SeznamMapsProvider.
+ * Test: Kdyby\Geocoder\SeznamMaps.
  *
  * @testCase KdybyTests\Geocoder\SeznamMapsProviderTest
  * @author Filip Procházka <filip@prochazka.su>
@@ -11,7 +11,7 @@
 namespace KdybyTests\Geocoder;
 
 use Kdyby;
-use Kdyby\Geocoder\Provider\SeznamMapsProvider;
+use Kdyby\Geocoder\Provider\SeznamMaps;
 use Nette;
 use Nette\Utils\Strings;
 use Tester;
@@ -31,7 +31,7 @@ class SeznamMapsProviderTest extends Tester\TestCase
 	{
 		$adapter = $this->mockAdapter();
 
-		$provider = new SeznamMapsProvider($adapter);
+		$provider = new SeznamMaps($adapter);
 		$addresses = $provider->reverse('49.188170408', '16.6049509394');
 
 		Assert::count(1, $addresses);
@@ -60,7 +60,7 @@ class SeznamMapsProviderTest extends Tester\TestCase
 	{
 		$adapter = $this->mockAdapter();
 
-		$provider = new SeznamMapsProvider($adapter);
+		$provider = new SeznamMaps($adapter);
 		$addresses = $provider->geocode("Soukenická 5, Brno");
 
 		Assert::count(1, $addresses);
@@ -89,7 +89,7 @@ class SeznamMapsProviderTest extends Tester\TestCase
 	{
 		$adapter = $this->mockAdapter();
 
-		$provider = new SeznamMapsProvider($adapter);
+		$provider = new SeznamMaps($adapter);
 		$addresses = $provider->geocode("Soukenická, Brno");
 
 		Assert::count(1, $addresses);
@@ -139,7 +139,7 @@ class SeznamMapsProviderTest extends Tester\TestCase
 	{
 		$adapter = $this->mockAdapter();
 
-		$provider = new SeznamMapsProvider($adapter);
+		$provider = new SeznamMaps($adapter);
 		$addresses = $provider->limit(1)->geocode($input);
 
 		Assert::count(1, $addresses);
