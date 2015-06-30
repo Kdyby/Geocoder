@@ -83,7 +83,7 @@ class BestMatchProvider extends AbstractProvider implements Provider
 	 */
 	public function getName()
 	{
-		return 'best_match';
+		return $this->provider->getName() . '_best_match';
 	}
 
 }
