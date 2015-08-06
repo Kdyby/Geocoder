@@ -23,7 +23,7 @@ extensions:
 
 ## Minimal configuration
 
-The extension doesn't have a full support for configuring the provicers graph, but for now, it at least configures the `httpAdapter`.
+The extension doesn't have a full support for configuring the providers graph, but for now, it at least configures the `httpAdapter`.
 
 ```yml
 geocoder:
