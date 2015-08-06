@@ -10,7 +10,7 @@ It also adds the `SeznamMaps` provider, and comparator logic for sorting the res
 You can install the extension using this command
 
 ```sh
-$ composer require kdyby/geocoder
+$ composer require kdyby/geocoder:@dev
 ```
 
 and enable the extension using your neon config.
