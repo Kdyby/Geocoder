@@ -43,7 +43,7 @@ This should allow you to use the `GoogleMaps` geocoder as a service.
 ## Complete example
 
 For my application, I had to use combination of providers, cache them and use comparators to get the result best matching the input.
-The foolowing example uses [Kdyby/Monolog](https://github.com/Kdyby/Monolog) and custom `CachingProvider`, which is not part of this package.
+The following example uses [Kdyby/Monolog](https://github.com/Kdyby/Monolog) and custom `CachingProvider`, which is not part of this package.
 
 ```yml
 services:
