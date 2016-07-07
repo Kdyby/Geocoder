@@ -51,8 +51,8 @@ class SeznamMaps extends AbstractHttpProvider implements Provider
 			throw new UnsupportedOperation('The SeznamMaps does not support IP addresses.');
 		}
 
-		$results = array();
-		$xml = $this->executeQuery(self::GEOCODE_URI, $query = array('query' => $address));
+		$results = [];
+		$xml = $this->executeQuery(self::GEOCODE_URI, $query = ['query' => $address]);
 
 		/** @var SimpleXMLElement|\stdClass $point */
 		$point = $xml->point;
@@ -64,12 +64,12 @@ class SeznamMaps extends AbstractHttpProvider implements Provider
 
 			/** @var SimpleXMLElement|\stdClass $attrs */
 			$attrs = $item->attributes();
-			if (in_array((string) $attrs->source, array('area', 'firm'), TRUE)) {
+			if (in_array((string) $attrs->source, ['area', 'firm'], TRUE)) {
 				continue; // ignore
 			}
 
 			try {
-				$rgeocode = $this->executeQuery(self::REVERSE_URI, array('lat' => (string) $attrs->y, 'lon' => (string) $attrs->x));
+				$rgeocode = $this->executeQuery(self::REVERSE_URI, ['lat' => (string) $attrs->y, 'lon' => (string) $attrs->x]);
 
 			} catch (NoResult $e) {
 				continue; // ignore
@@ -119,7 +119,7 @@ class SeznamMaps extends AbstractHttpProvider implements Provider
 	 */
 	public function reverse($latitude, $longitude)
 	{
-		$xml = $this->executeQuery(self::REVERSE_URI, $query = array('lat' => $latitude, 'lon' => $longitude));
+		$xml = $this->executeQuery(self::REVERSE_URI, $query = ['lat' => $latitude, 'lon' => $longitude]);
 
 		$resultSet = $this->reversedToResult($xml);
 
@@ -127,7 +127,7 @@ class SeznamMaps extends AbstractHttpProvider implements Provider
 			throw new NoResult(sprintf('Could not execute query %s', json_encode($query)));
 		}
 
-		return $this->returnResults(array(array_merge($this->getDefaults(), $resultSet)));
+		return $this->returnResults([array_merge($this->getDefaults(), $resultSet)]);
 	}
 
 
@@ -139,9 +139,9 @@ class SeznamMaps extends AbstractHttpProvider implements Provider
 	 */
 	private function reversedToResult(SimpleXMLElement $rgeocode, $maximumPrecision = NULL)
 	{
-		$weights = array_flip(array('addr', 'stre', 'quar', 'ward', 'muni', 'dist', 'regi', 'coun'));
+		$weights = array_flip(['addr', 'stre', 'quar', 'ward', 'muni', 'dist', 'regi', 'coun']);
 
-		$resultSet = array();
+		$resultSet = [];
 
 		/** @var SimpleXMLElement|\stdClass $item */
 		foreach ($rgeocode->children() as $item) {
@@ -172,17 +172,17 @@ class SeznamMaps extends AbstractHttpProvider implements Provider
 					break;
 
 				case 'quar': // Brno-střed, level 4
-					$resultSet['adminLevels'][4] = array(
+					$resultSet['adminLevels'][4] = [
 						'name' => (string) $attrs->name,
 						'level' => 4,
-					);
+					];
 					break;
 
 				case 'ward': // Staré Brno, level 3
-					$resultSet['adminLevels'][3] = array(
+					$resultSet['adminLevels'][3] = [
 						'name' => (string) $attrs->name,
 						'level' => 3,
-					);
+					];
 					break;
 
 				case 'muni':
@@ -190,17 +190,17 @@ class SeznamMaps extends AbstractHttpProvider implements Provider
 					break;
 
 				case 'dist': // Brno-město, level 2
-					$resultSet['adminLevels'][2] = array(
+					$resultSet['adminLevels'][2] = [
 						'name' => (string) $attrs->name,
 						'level' => 2,
-					);
+					];
 					break;
 
 				case 'regi': // Jihomoravský, level 1
-					$resultSet['adminLevels'][1] = array(
+					$resultSet['adminLevels'][1] = [
 						'name' => (string) $attrs->name,
 						'level' => 1,
-					);
+					];
 					break;
 
 				case 'coun':

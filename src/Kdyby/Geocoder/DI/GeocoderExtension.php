@@ -25,15 +25,15 @@ class GeocoderExtension extends Nette\DI\CompilerExtension
 	/**
 	 * @var array
 	 */
-	public $defaults = array(
-		'providers' => array(),
+	public $defaults = [
+		'providers' => [],
 		'httpAdapter' => 'curl'
-	);
+	];
 
 	/**
 	 * @var array
 	 */
-	public static $providers = array(
+	public static $providers = [
 		'Kdyby\Geocoder\Provider\SeznamMapsProvider',
 		'Geocoder\Provider\ArcGISOnline',
 		'Geocoder\Provider\BingMaps',
@@ -55,18 +55,18 @@ class GeocoderExtension extends Nette\DI\CompilerExtension
 		'Geocoder\Provider\OpenStreetMap',
 		'Geocoder\Provider\TomTom',
 		'Geocoder\Provider\Yandex',
-	);
+	];
 
-	public static $httpAdapters = array(
+	public static $httpAdapters = [
 		'curl' => 'Ivory\HttpAdapter\CurlHttpAdapter',
-	);
+	];
 
 
 
 	public function __construct()
 	{
 		$providers = self::$providers;
-		self::$providers = array();
+		self::$providers = [];
 
 		foreach ($providers as $providerClass) {
 			if (!class_exists($providerClass)) {
@@ -147,7 +147,7 @@ class GeocoderExtension extends Nette\DI\CompilerExtension
 	 */
 	private function filterArgs($statement)
 	{
-		return Nette\DI\Compiler::filterArguments(array(is_string($statement) ? new Nette\DI\Statement($statement) : $statement));
+		return Nette\DI\Compiler::filterArguments([is_string($statement) ? new Nette\DI\Statement($statement) : $statement]);
 	}
 
 

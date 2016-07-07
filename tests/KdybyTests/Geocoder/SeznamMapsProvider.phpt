@@ -116,18 +116,18 @@ class SeznamMapsProviderTest extends Tester\TestCase
 
 	public function dataGeocode_samples()
 	{
-		return array(
-			array('Cejl 486/17, 60200 Brno, okres Brno-město', 'Cejl 17, Brno'),
-			array('Černická 708/10, 30100 Plzeň, okres Plzeň-město', 'Černická 10, 30100 Plzeň'),
-			array(' , 74245 Fulnek, okres Nový Jičín', 'Děrné'),
-			array(' , 74245 Fulnek, okres Nový Jičín', 'Fulnek'),
-			array('K Zelené louce 1484/2a, 14800 Praha, okres Hlavní město Praha', 'K Zelené louce 2a, Praha'),
-			array('Ostrovského 365/7, 15000 Praha, okres Hlavní město Praha', 'Ostrovského 7, 150 00 Praha 5'),
-			array(' , 69301 Starovičky, okres Břeclav', 'Starovičky'),
-			array('tř. T. G. Masaryka 1119, 73801 Frýdek-Místek, okres Frýdek-Místek', 'T.G.Masaryka 1119, 73801 Frýdek-Místek'),
-			array('Vaňkova , 19800 Praha, okres Hlavní město Praha', 'Vaňkova, Praha'),
-			array('MCV Brno ,  Hrotovice, okres Třebíč', 'MCV Brno, Hrotovice'),
-		);
+		return [
+			['Cejl 486/17, 60200 Brno, okres Brno-město', 'Cejl 17, Brno'],
+			['Černická 708/10, 30100 Plzeň, okres Plzeň-město', 'Černická 10, 30100 Plzeň'],
+			[' , 74245 Fulnek, okres Nový Jičín', 'Děrné'],
+			[' , 74245 Fulnek, okres Nový Jičín', 'Fulnek'],
+			['K Zelené louce 1484/2a, 14800 Praha, okres Hlavní město Praha', 'K Zelené louce 2a, Praha'],
+			['Ostrovského 365/7, 15000 Praha, okres Hlavní město Praha', 'Ostrovského 7, 150 00 Praha 5'],
+			[' , 69301 Starovičky, okres Břeclav', 'Starovičky'],
+			['tř. T. G. Masaryka 1119, 73801 Frýdek-Místek, okres Frýdek-Místek', 'T.G.Masaryka 1119, 73801 Frýdek-Místek'],
+			['Vaňkova , 19800 Praha, okres Hlavní město Praha', 'Vaňkova, Praha'],
+			['MCV Brno ,  Hrotovice, okres Třebíč', 'MCV Brno, Hrotovice'],
+		];
 	}
 
 
