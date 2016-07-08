@@ -1,79 +1,107 @@
 {
-   "results" : [
-      {
-         "address_components" : [
-            {
-               "long_name" : "5",
-               "short_name" : "5",
-               "types" : [ "street_number" ]
-            },
-            {
-               "long_name" : "559",
-               "short_name" : "559",
-               "types" : [ "premise" ]
-            },
-            {
-               "long_name" : "Soukenická",
-               "short_name" : "Soukenická",
-               "types" : [ "route" ]
-            },
-            {
-               "long_name" : "Brno-střed",
-               "short_name" : "Brno-střed",
-               "types" : [ "sublocality_level_1", "sublocality", "political" ]
-            },
-            {
-               "long_name" : "Brno",
-               "short_name" : "Brno",
-               "types" : [ "locality", "political" ]
-            },
-            {
-               "long_name" : "Brno 2",
-               "short_name" : "Brno 2",
-               "types" : [ "postal_town" ]
-            },
-            {
-               "long_name" : "Brno-město",
-               "short_name" : "Brno-město",
-               "types" : [ "administrative_area_level_2", "political" ]
-            },
-            {
-               "long_name" : "Jihomoravský kraj",
-               "short_name" : "Jihomoravský kraj",
-               "types" : [ "administrative_area_level_1", "political" ]
-            },
-            {
-               "long_name" : "Česká republika",
-               "short_name" : "CZ",
-               "types" : [ "country", "political" ]
-            },
-            {
-               "long_name" : "602 00",
-               "short_name" : "602 00",
-               "types" : [ "postal_code" ]
-            }
-         ],
-         "formatted_address" : "Soukenická 559/5, 602 00 Brno-Brno-střed, Česká republika",
-         "geometry" : {
-            "location" : {
-               "lat" : 49.1881705,
-               "lng" : 16.6049561
-            },
-            "location_type" : "ROOFTOP",
-            "viewport" : {
-               "northeast" : {
-                  "lat" : 49.18951948029149,
-                  "lng" : 16.6063050802915
-               },
-               "southwest" : {
-                  "lat" : 49.1868215197085,
-                  "lng" : 16.6036071197085
-               }
-            }
-         },
-         "place_id" : "ChIJT2a7YlOUEkcRr3_-7Q_UO60",
-         "types" : [ "street_address" ]
-      }
-   ],
-   "status" : "OK"
+  "results": [
+    {
+      "address_components": [
+        {
+          "long_name": "5",
+          "short_name": "5",
+          "types": [
+            "street_number"
+          ]
+        },
+        {
+          "long_name": "559",
+          "short_name": "559",
+          "types": [
+            "premise"
+          ]
+        },
+        {
+          "long_name": "Soukenická",
+          "short_name": "Soukenická",
+          "types": [
+            "route"
+          ]
+        },
+        {
+          "long_name": "Brno-střed",
+          "short_name": "Brno-střed",
+          "types": [
+            "sublocality_level_1",
+            "sublocality",
+            "political"
+          ]
+        },
+        {
+          "long_name": "Brno",
+          "short_name": "Brno",
+          "types": [
+            "locality",
+            "political"
+          ]
+        },
+        {
+          "long_name": "Brno 2",
+          "short_name": "Brno 2",
+          "types": [
+            "postal_town"
+          ]
+        },
+        {
+          "long_name": "Brno-město",
+          "short_name": "Brno-město",
+          "types": [
+            "administrative_area_level_2",
+            "political"
+          ]
+        },
+        {
+          "long_name": "Jihomoravský kraj",
+          "short_name": "Jihomoravský kraj",
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ]
+        },
+        {
+          "long_name": "Česká republika",
+          "short_name": "CZ",
+          "types": [
+            "country",
+            "political"
+          ]
+        },
+        {
+          "long_name": "602 00",
+          "short_name": "602 00",
+          "types": [
+            "postal_code"
+          ]
+        }
+      ],
+      "formatted_address": "Soukenická 559/5, 602 00 Brno-Brno-střed, Česká republika",
+      "geometry": {
+        "location": {
+          "lat": 49.1881705,
+          "lng": 16.6049561
+        },
+        "location_type": "ROOFTOP",
+        "viewport": {
+          "northeast": {
+            "lat": 49.18951948029149,
+            "lng": 16.6063050802915
+          },
+          "southwest": {
+            "lat": 49.1868215197085,
+            "lng": 16.6036071197085
+          }
+        }
+      },
+      "place_id": "ChIJT2a7YlOUEkcRr3_-7Q_UO60",
+      "types": [
+        "street_address"
+      ]
+    }
+  ],
+  "status": "OK"
 }
