@@ -4,6 +4,7 @@ Kdyby/Geocoder
 [![Build Status](https://travis-ci.org/Kdyby/Geocoder.svg?branch=master)](https://travis-ci.org/Kdyby/Geocoder)
 [![Downloads this Month](https://img.shields.io/packagist/dm/kdyby/geocoder.svg)](https://packagist.org/packages/kdyby/geocoder)
 [![Latest stable](https://img.shields.io/packagist/v/kdyby/geocoder.svg)](https://packagist.org/packages/kdyby/geocoder)
+[![Coverage Status](https://coveralls.io/repos/github/Kdyby/Geocoder/badge.svg?branch=master)](https://coveralls.io/github/Kdyby/Geocoder?branch=master)
 [![Join the chat at https://gitter.im/Kdyby/Help](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Kdyby/Help)
 
 This extension helps with integration of [willdurand/geocoder](https://github.com/geocoder-php/Geocoder) into Nette Framework.
